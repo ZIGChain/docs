@@ -1,0 +1,9 @@
+{
+  "label": "Tutorials",
+  "position": 5,
+  "link": {
+    "type": "generated-index",
+    "description": "Tutorials on how to use ZIGChain."
+  },
+  "className": "hidden"
+}
