@@ -1,0 +1,80 @@
+version: 1
+project:
+  # Optional: if this config lives inside a subdirectory (e.g., ai-augmentation/),
+  # set `root` to the actual project repository root (relative or absolute).
+  #
+  # Important:
+  # - `context.docsRoot` is always resolved relative to the *resolved project root* (not relative to this config file).
+  # - If you place `.ai-augmentation.yml` in your repo root, you usually should omit `project.root` entirely.
+  #
+  # Common layouts:
+  # - Config in repo root + docs at `<repo>/docs`:
+  #     (omit `project.root`) + `context.docsRoot: docs`
+  # - Config in `.ai-augmentation/` + docs at `<repo>/docs`:
+  #     `project.root: ..` + `context.docsRoot: docs`
+  # root: ..
+context:
+  # AI-Augmentation project configuration (copy into a target project)
+  #
+  # 1) Copy this file into the *target project repo root* as `.ai-augmentation.yml`
+  #    (same level as `.git/`, `package.json`, `composer.json`, etc).
+  #
+  # 2) Set `context.docsRoot` to the folder that contains the AI context corpus taxonomy:
+  #      requirements/, architecture/, guides/, analysis/, governance/, reference/, ...
+  #
+  # 3) Run prompts (operator-friendly):
+  #    - From the project root:
+  #        npm --prefix ai-augmentation run prompt:run
+  #    - Or from inside the framework directory:
+  #        cd ai-augmentation && npm run prompt:run
+  #
+  # You can override this config per-run with:
+  #   - CLI: `--docsRoot <path>`
+  #   - ENV: `AI_AUG_DOCS_ROOT=<path>`
+  #
+  # Common choices:
+  #   - Standard repos: docs
+  #   - MkDocs repos: docs (or whatever `mkdocs.yml:docs_dir` is)
+  #   - Monorepos: apps/api/docs, services/billing/docs, etc
+  #
+  # Framework development (this repo):
+  # - If you're developing the AI-Augmentation framework itself, set docsRoot to the committed sample corpus:
+  #     framework/modules/software/docs/examples/library
+  docsRoot: docs
+
+  # Optional: location of the context index within the docs corpus.
+  # contextIndex: context-index.md
+
+# Optional: where the AI-Augmentation framework is mounted in this project.
+# This is used for stable path references like `<aiFrameworkRoot>/framework/modules/software/standards/...`.
+# Prefer a project-relative mount: `ai-augmentation/` (vendored) or `.ai-augmentation` (symlink).
+framework:
+  root: .ai-augmentation
+
+# Optional: prompt runner UX + guardrails.
+# This controls what operators can attach as "extra context docs" in the interactive runner
+# (and what can be passed via headless `--extra-doc`).
+runner:
+  extraDocs:
+    # Allowed roots for extra context attachments.
+    #
+    # - `<docsRoot>` means "paths relative to the docs corpus root" (recommended).
+    # - Any other entry is treated as a repo-relative directory prefix, e.g. `src`, `apps/api/src`.
+    #
+    # Default (when omitted): [`<docsRoot>`]
+    allowRoots:
+      - "<docsRoot>"
+
+    # Optional: allow attaching code context from these repo-relative roots.
+    # codeRoots:
+    #   - src
+    #   - apps/api/src
+
+    # Hard-deny list (repo-relative prefixes) for safety/noise control.
+    # This is applied in addition to built-in ignores (node_modules/.git/etc).
+    # denyRoots:
+    #   - ai-augmentation
+
+    # Optional: bound traversal cost for autocomplete.
+    # maxDepth: 4
+    # maxEntries: 400
