@@ -1,0 +1,359 @@
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+/* Font Awesome - Loaded asynchronously to prevent blocking CSS parsing on mobile */
+/* Preconnect to CDN for faster loading */
+/* Note: Font Awesome icons are loaded via link tag in HTML head (see docusaurus.config.ts) */
+
+/* You can override the default Infima variables here. */
+:root {
+  --ifm-color-primary: #144876;
+  --ifm-color-primary-dark: #12416a;
+  --ifm-color-primary-darker: #113d64;
+  --ifm-color-primary-darkest: #0e3253;
+  --ifm-color-primary-light: #164f82;
+  --ifm-color-primary-lighter: #175388;
+  --ifm-color-primary-lightest: #1a5e99;
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+}
+
+/* For readability concerns, you should choose a lighter palette in dark mode. */
+[data-theme="dark"] {
+  --ifm-color-primary: #5bb0fb;
+  --ifm-color-primary-dark: #3aa0fa;
+  --ifm-color-primary-darker: #2998fa;
+  --ifm-color-primary-darkest: #067fea;
+  --ifm-color-primary-light: #7cc0fc;
+  --ifm-color-primary-lighter: #8dc8fc;
+  --ifm-color-primary-lightest: #bfe0fd;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}
+
+/** Custom spacing for main content */
+.docMainWrapper .wrapper,
+.headerWrapper.wrapper,
+.wrapper {
+  padding: 25px;
+  margin: 25px;
+}
+
+article {
+  margin: 2rem 2rem 2rem 3rem;
+}
+
+.container > div:not(.row) {
+  padding: 16px;
+  margin: 16px;
+  padding-left: 32px;
+}
+
+section > article {
+  margin: 0;
+}
+
+@media (max-width: 1140px) {
+  article {
+    margin: 1.5rem 1.5rem 1.5rem 2rem;
+  }
+}
+
+.theme-doc-toc-mobile {
+  display: none;
+}
+
+.theme-doc-breadcrumbs {
+  margin-bottom: 1.5rem !important;
+}
+
+.breadcrumbs__link {
+  padding-left: 0;
+}
+
+.breadcrumbs__item--active .breadcrumbs__link {
+  background-color: transparent !important;
+}
+
+.breadcrumbs__link:hover {
+  background-color: transparent !important;
+}
+
+/** End Custom spacing for main content */
+
+/** Size for nav bar logo */
+.navbar__logo {
+  height: 30px;
+  margin-left: 5px;
+}
+
+/** Class to hide items (used for sidebar) */
+.hidden {
+  display: none !important;
+}
+
+.navbar-item-hidden {
+  display: none !important;
+}
+
+/* Hide navbar items on non-current docs versions */
+html:not(.docs-version-current) .navbar__items:not(.navbar__items--right) .navbar__item {
+  display: none !important;
+}
+
+/** Custom styling for border after items in the sidebar */
+li.theme-doc-sidebar-item-link-level-1:not(:last-child)::after,
+li.theme-doc-sidebar-item-category:not(:last-child)::after {
+  content: "";
+  display: block;
+  height: 4px;
+  margin: 0.4em auto;
+  width: 93%;
+  border-radius: 0;
+  background-color: var(--border-color);
+}
+
+/* Smaller dividers for sub-folders (level 2 and deeper) */
+li.theme-doc-sidebar-item-link-level-2:not(:last-child)::after,
+li.theme-doc-sidebar-item-category-level-2:not(:last-child)::after {
+  content: "";
+  display: block;
+  height: 2px;
+  margin: 0.2em auto;
+  width: 85%;
+  border-radius: 0;
+  background-color: var(--border-color);
+  opacity: 0.7;
+}
+
+/* Even smaller dividers for deeper nested levels (level 3 and deeper) */
+li.theme-doc-sidebar-item-link-level-3:not(:last-child)::after,
+li.theme-doc-sidebar-item-category-level-3:not(:last-child)::after,
+li.theme-doc-sidebar-item-link-level-4:not(:last-child)::after,
+li.theme-doc-sidebar-item-category-level-4:not(:last-child)::after {
+  content: "";
+  display: block;
+  height: 1px;
+  margin: 0.1em auto;
+  width: 75%;
+  border-radius: 0;
+  background-color: var(--border-color);
+  opacity: 0.5;
+}
+
+[data-theme="light"] {
+  --border-color: #f8f8f8;
+}
+
+[data-theme="dark"] {
+  --border-color: #2d2d2d;
+}
+
+.spacer {
+  height: 1px;
+  margin: 20px 0;
+}
+
+.theme-doc-version-badge {
+  display: none !important;
+}
+
+/* Custom dropdown styling */
+.navbar__item.dropdown {
+  position: relative;
+}
+
+.dropdown__menu {
+  background: var(--ifm-navbar-background-color);
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  min-width: 200px;
+  padding: 8px 0;
+}
+
+.dropdown__link {
+  color: var(--ifm-navbar-link-color);
+  display: block;
+  padding: 8px 16px;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.dropdown__link:hover {
+  background-color: var(--ifm-color-emphasis-100);
+  color: var(--ifm-navbar-link-color);
+  text-decoration: none;
+}
+
+.dropdown__link--active {
+  background-color: var(--ifm-color-primary);
+  color: white;
+}
+
+.dropdown__link--active:hover {
+  background-color: var(--ifm-color-primary-dark);
+  color: white;
+}
+
+.dropdown__divider {
+  border-top: 1px solid var(--ifm-color-emphasis-300);
+  margin: 8px 0;
+}
+
+/* Top border for all dropdown items except the first */
+.dropdown__menu li + li > .dropdown__link {
+  border-top: 1px solid var(--ifm-color-emphasis-300);
+}
+
+/* Emoji icons in navbar dropdown */
+.dropdown__link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Font Awesome icons for menu items */
+.resources-menu-item::before {
+  content: "\f02d";
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  font-size: 14px;
+  margin-right: 8px;
+}
+
+.discord-menu-item::before {
+  content: "\f392";
+  font-family: "Font Awesome 6 Brands";
+  font-weight: 400;
+  font-size: 14px;
+  margin-right: 8px;
+}
+
+.github-menu-item::before {
+  content: "\f09b";
+  font-family: "Font Awesome 6 Brands";
+  font-weight: 400;
+  font-size: 14px;
+  margin-right: 8px;
+}
+
+.keplr-menu-item::before {
+  content: "\f555";
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  font-size: 14px;
+  margin-right: 8px;
+}
+
+.leap-menu-item::before {
+  content: "\f555";
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  font-size: 14px;
+  margin-right: 8px;
+}
+
+.range-menu-item::before {
+  content: "\f002";
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  font-size: 14px;
+  margin-right: 8px;
+}
+
+.zigchain-menu-item::before {
+  content: "\f0ac";
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  font-size: 14px;
+  margin-right: 8px;
+}
+
+.landing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.landing-card {
+  padding: 1.75rem;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+.landing-card:hover {
+  border-color: var(--ifm-color-primary);
+  transform: translateY(-4px);
+}
+
+.landing-card h2 {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  color: var(--ifm-color-primary);
+}
+
+.landing-card--hidden {
+  display: none;
+}
+
+.landing-hero {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  align-items: stretch;
+}
+
+.landing-hero__text h1 {
+  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  margin: 0;
+  color: var(--ifm-color-primary);
+}
+
+.landing-hero__text p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  max-width: 650px;
+}
+
+.landing-hero__eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+  color: var(--ifm-color-primary);
+}
+
+.landing-hero__image img {
+  width: 100%;
+  border-radius: 24px;
+  max-height: 280px;
+  object-fit: cover;
+  display: block;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 20px 35px rgba(0, 0, 0, 0.4);
+}
+
+@media (min-width: 900px) {
+  .landing-hero {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .landing-hero__text {
+    flex: 1;
+  }
+
+  .landing-hero__image {
+    flex: 1;
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "label": "Resources",
+  "position": 11,
+  "link": {
+    "type": "generated-index",
+    "description": "Web applications and tools that allow you to quickly obtain information from the ZIGChain blockchain through friendly user interfaces."
+  },
+  "collapsed": true
+}
